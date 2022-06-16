@@ -17,60 +17,30 @@ steps.
 Below is a description of every field in the csv file. For a discussion on the
 different datasets, refer to Appendix E.
 
-| Field                   | Description                                        |
+| Field                   | Description |
 | ----------------------- | -------------------------------------------------- |
-| `hyper_id`              | A unique identifier per hyperparameter setting     |
-| `step`                  | The number of training steps the model has trained |
-:                         : for before doing that evaluation round.            :
-| `router_type`           | The technique used to learn and execute the        |
-:                         : routing. Can be one of `Dense`, `Hash`, `S-Base`   :
-:                         : and `RL-R`. These techniques are described in      :
-:                         : Section 3 of the paper.                            :
-| `num_experts`           | The number of experts per routed layer in the      |
-:                         : model (referred as *E* in the paper).              :
-| `k`                     | The number experts used per datapoint, *i.e.* if   |
-:                         : k=2, the output of the routed layer per token will :
-:                         : be an aggregation of two experts.                  :
-| `routing_frequency`     | The fraction of transformer blocks that have a     |
-:                         : routed layer. *e.g.* a routing_frequency of 0.5    :
-:                         : means every other block will be routed, while a    :
-:                         : frequency of 0.25 means there are three dense      :
-:                         : blocks between routed blocks.                      :
-| `flop_increase`         | Only relevant for `Dense` models. When             |
-:                         : `flop_increase > 1`, the size of the feedforward   :
-:                         : layer is increased by this factor. This emulates   :
-:                         : the increase in flops that occurs when increasing  :
-:                         : `k` in routed models.                              :
-| `d_model`               | The transformer's width parameter                  |
-| `num_blocks`            | The number of transformer blocks in the model      |
-| `num_heads`             | The number heads in the Multihead Attention        |
-:                         : modules                                            :
-| `kqv_size`              | The dimensionality for the keys, queries and       |
-:                         : values of each attention head.                     :
-| `seed`                  | The random seed used to initialize the weights. As |
-:                         : described in Appendix A, we only varied the seed   :
-:                         : for a small subset of the runs.                    :
-| `total_parameter_count` | The total number of parameters int the model,      |
-:                         : including those of all the experts                 :
-| `dense_parameter_count` | The number of parameters seen by a single          |
-:                         : datapoint. Refer to the paper for a discussion on  :
-:                         : the distinction of "dense" counts (N) and "total"  :
-:                         : counts (P) (*e.g.* in Section 2.1)                 :
-| `flops_per_step`        | An estimate of the number of flops for a model's   |
-:                         : forward-step.                                      :
-| `model_size_label`      | A label for the model's size. This should roughly  |
-:                         : match `dense_parameter_count`. Can be one of       :
-:                         : `15M`, `25M`, `55M`, `130M`, `370M`, `870M` or     :
-:                         : `1.3B`.                                            :
-| `loss_validation`       | Negative log-likelihood on a held-out portion of   |
-:                         : the original dataset.                              :
-| `loss_c4`               | Negative log-likelihood on C4                      |
-| `loss_curation_corpus`  | Negative log-likelihood on the Curation Corpus     |
-:                         : dataset.                                           :
-| `loss_lambada`          | Negative log-likelihood on the LAMBADA task        |
-| `loss_pile`             | Negative log-likelihood on The Pile dataset        |
-| `loss_wikitext103`      | Negative log-likelihood on the Wikitext103         |
-:                         : dataset.                                           :
+| `hyper_id`              | A unique identifier per hyperparameter setting |
+| `step`                  | The number of training steps the model has trained for before doing that evaluation round. |
+| `router_type`           | The technique used to learn and execute the routing. Can be one of `Dense`, `Hash`, `S-Base` and `RL-R`. These techniques are described in Section 3 of the paper. |
+| `num_experts`           | The number of experts per routed layer in the model (referred as *E* in the paper). |
+| `k`                     | The number experts used per datapoint, *i.e.* if  k=2, the output of the routed layer per token will be an aggregation of two experts. |
+| `routing_frequency`     | The fraction of transformer blocks that have a routed layer. *e.g.* a routing_frequency of 0.5 means every other block will be routed, while a frequency of 0.25 means there are three dense blocks between routed blocks. |
+| `flop_increase`         | Only relevant for `Dense` models. When  `flop_increase > 1`, the size of the feedforward layer is increased by this factor. This emulates the increase in flops that occurs when increasing `k` in routed models. |
+| `d_model`               | The transformer's width parameter. |
+| `num_blocks`            | The number of transformer blocks in the model. |
+| `num_heads`             | The number heads in the Multihead Attention modules. |
+| `kqv_size`              | The dimensionality for the keys, queries and values of each attention head. |
+| `seed`                  | The random seed used to initialize the weights. As described in Appendix A, we only varied the seed for a small subset of the runs. |
+| `total_parameter_count` | The total number of parameters int the model, including those of all the experts |
+| `dense_parameter_count` | The number of parameters seen by a single datapoint. Refer to the paper for a discussion on the distinction of "dense" counts (N) and "total" counts (P) (*e.g.* in Section 2.1) |
+| `flops_per_step`        | An estimate of the number of flops for a model's forward-step. |
+| `model_size_label`      | A label for the model's size. This should roughly  match `dense_parameter_count`. Can be one of  `15M`, `25M`, `55M`, `130M`, `370M`, `870M` or  `1.3B`. |
+| `loss_validation`       | Negative log-likelihood on a held-out portion of the original dataset. |
+| `loss_c4`               | Negative log-likelihood on C4 |
+| `loss_curation_corpus`  | Negative log-likelihood on the Curation Corpus  dataset. |
+| `loss_lambada`          | Negative log-likelihood on the LAMBADA task/ |
+| `loss_pile`             | Negative log-likelihood on The Pile dataset. |
+| `loss_wikitext103`      | Negative log-likelihood on the Wikitext103  dataset.|
 
 ## Usage
 
