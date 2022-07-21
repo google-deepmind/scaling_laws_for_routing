@@ -38,8 +38,8 @@ different datasets, refer to Appendix E.
 | `loss_validation`       | Negative log-likelihood on a held-out portion of the original dataset. |
 | `loss_c4`               | Negative log-likelihood on C4 |
 | `loss_curation_corpus`  | Negative log-likelihood on the Curation Corpus  dataset. |
-| `loss_lambada`          | Negative log-likelihood on the LAMBADA task/ |
-| `loss_pile`             | Negative log-likelihood on The Pile dataset. |
+| `loss_lambada`          | Negative log-likelihood on the LAMBADA task. |
+| `loss_pile`             | Negative log-likelihood on The Pile dataset, EuroParl subset. |
 | `loss_wikitext103`      | Negative log-likelihood on the Wikitext103  dataset.|
 
 ## Usage
